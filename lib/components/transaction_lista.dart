@@ -16,21 +16,29 @@ class TransactionList extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.6,
       child: transactions.isEmpty
-          ? Column(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                Text(
-                  "Nenhuma transação cadastrada!",
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  height: 200,
-                  child: Image.asset("assets/images/waiting.png"),
-                ),
-              ],
-            )
+          ? LayoutBuilder(builder: ((context, constraints) {
+              return Column(
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Nenhuma transação cadastrada!",
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: constraints.maxHeight * 0.6,
+                    child: Image.asset(
+                      "assets/images/waiting.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              );
+            }))
           : ListView.builder(
               itemCount: transactions.length,
               itemBuilder: (ctx, index) {
