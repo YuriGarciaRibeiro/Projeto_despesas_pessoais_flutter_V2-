@@ -58,7 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
           return FormNameAmount(_addTransaction);
         });
   }
-  
 
   _deleteTransaction(String id) {
     setState(() {
@@ -68,23 +67,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      title: Text('Expenses'),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => _openTransactionFormModal(context),
+        ),
+      ],
+    );
+
+    final availableHeight = MediaQuery.of(context).size.height -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Expenses'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => _openTransactionFormModal(context),
-          ),
-        ],
-      ),
+      appBar: appBar,
       body: Column(
         children: [
-          Grafic(_recentTransactions),
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                TransactionList(_transactions, _deleteTransaction),
+                Container(
+                  height: availableHeight * 0.4,
+                  child: Grafic(_recentTransactions),
+                ),
+                Container(
+                  height: availableHeight * 0.6,
+                  child: TransactionList(_transactions, _deleteTransaction),
+                ),
               ],
             ),
           ),
