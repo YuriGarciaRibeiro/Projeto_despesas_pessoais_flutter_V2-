@@ -84,10 +84,13 @@ class _MyHomePageState extends State<MyHomePage> {
     final isLandScape =
         MediaQuery.of(context).orientation == Orientation.landscape;
 
+    final iconList = Platform.isIOS ? CupertinoIcons.list_bullet : Icons.list;
+    final iconChart = Platform.isIOS ? CupertinoIcons.chart_bar_alt_fill : Icons.show_chart;
+
     final actions = [
       if (isLandScape)
         _getIconButton(
-          _showChart ? Icons.list : Icons.show_chart,
+          _showChart ? iconList : iconChart,
           () => setState(() {
             _showChart = !_showChart;
           }),
@@ -112,21 +115,23 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
 
-    final bodyPage = SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          if (_showChart || !isLandScape)
-            Container(
-              height: availableHeight * (isLandScape ? 0.7 : 0.3),
-              child: Grafic(_recentTransactions),
-            ),
-          if (!_showChart || !isLandScape)
-            Container(
-              height: availableHeight * (isLandScape ? 1 : 0.7),
-              child: TransactionList(_transactions, _deleteTransaction),
-            ),
-        ],
+    final bodyPage = SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            if (_showChart || !isLandScape)
+              Container(
+                height: availableHeight * (isLandScape ? 0.7 : 0.3),
+                child: Grafic(_recentTransactions),
+              ),
+            if (!_showChart || !isLandScape)
+              Container(
+                height: availableHeight * (isLandScape ? 1 : 0.7),
+                child: TransactionList(_transactions, _deleteTransaction),
+              ),
+          ],
+        ),
       ),
     );
 
