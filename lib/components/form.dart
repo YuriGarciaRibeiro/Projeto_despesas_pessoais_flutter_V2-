@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 import 'adaptative_button.dart';
+import 'adaptative_textField.dart';
+import 'adataptative_date_picker.dart';
 
 class FormNameAmount extends StatefulWidget {
   final void Function(String, double, DateTime) addTransaction;
@@ -31,21 +33,7 @@ class _FormNameAmountState extends State<FormNameAmount> {
         double.tryParse(_valueController.text) ?? 0.0, _selectedDate);
   }
 
-  _showDatePicker(BuildContext context) {
-    showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2019),
-      lastDate: DateTime.now(),
-    ).then((pickedDate) {
-      if (pickedDate == null) {
-        return;
-      }
-      setState(() {
-        _selectedDate = pickedDate;
-      });
-    });
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -61,43 +49,33 @@ class _FormNameAmountState extends State<FormNameAmount> {
           ),
           child: Column(
             children: [
-              TextField(
+              AdaptativeTextField(
+                text: 'Título',
                 controller: _tittleController,
                 onSubmitted: (_) => _submitForm(),
-                decoration: InputDecoration(labelText: "Titulo"),
               ),
-              TextField(
+              AdaptativeTextField(
                 controller: _valueController,
                 onSubmitted: (_) => _submitForm(),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(labelText: "Valor (R\$)"),
+                text: "Valor (R\$)",
               ),
-              SizedBox(
-                height: 70,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(_selectedDate == null
-                          ? "Nenhuma data selecionada"
-                          : "Data Selecionada: ${DateFormat("dd/MM/y").format(_selectedDate)}"),
-                    ),
-                    TextButton(
-                      child: Text(
-                        "Selecionar data",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onPressed: () {
-                        _showDatePicker(context);
-                      },
-                    ),
-                  ],
-                ),
+              AdaptativeDatePicker(
+                selectedDate: _selectedDate,
+                onDateChanged: (newDate) {
+                  setState(() {
+                    _selectedDate = newDate;
+                  });
+                },
               ),
-              AdaptativeButton(
-                text: "Adicionar Transação",
-                onPressed: _submitForm,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AdaptativeButton(
+                    text: "Adicionar Transação",
+                    onPressed: _submitForm,
+                  ),
+                ],
               ),
             ],
           ),

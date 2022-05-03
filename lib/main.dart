@@ -85,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
         MediaQuery.of(context).orientation == Orientation.landscape;
 
     final iconList = Platform.isIOS ? CupertinoIcons.list_bullet : Icons.list;
-    final iconChart = Platform.isIOS ? CupertinoIcons.chart_bar_alt_fill : Icons.show_chart;
+    final iconChart =
+        Platform.isIOS ? CupertinoIcons.chart_bar_alt_fill : Icons.show_chart;
 
     final actions = [
       if (isLandScape)
