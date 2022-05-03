@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'adaptative_button.dart';
 
 class FormNameAmount extends StatefulWidget {
   final void Function(String, double, DateTime) addTransaction;
@@ -94,11 +95,10 @@ class _FormNameAmountState extends State<FormNameAmount> {
                   ],
                 ),
               ),
-              ElevatedButton(
-                  child: Text(
-                    "Adicionar",
-                  ),
-                  onPressed: _submitForm)
+              AdaptativeButton(
+                text: "Adicionar Transação",
+                onPressed: _submitForm,
+              ),
             ],
           ),
         ),
