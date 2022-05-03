@@ -1,4 +1,14 @@
 <h1 align="center" >Controle de despesas com flutter V2</h1>
-<div>
-<p align="center"><a href="" target="_blank"><img src="https://drive.google.com/uc?export=view&id=1_YBMYr03NN6diUuy2QqVnd5Ik_DamSi5" width="500"></a></p>
-</div>
+<h2>Upgrades</h2>
+<p>- Responsividade</p>
+<p>- Adaptação ao sistema IOS</p>
+<p>- Correção de erros no modo paisagem</p>
+
+
+
+
+<p><a href="" target="_blank" align='left'><img src="https://drive.google.com/uc?export=view&id=1_YBMYr03NN6diUuy2QqVnd5Ik_DamSi5" width="500"></a></p><br>
+<p><a href="" target="_blank" align='left'><img src="https://drive.google.com/uc?export=view&id=1LeP_T7jB3ZiSHKbRl1cvBLEEWg-L_pYk" width="500"></a></p>
+<p><a href="" target="_blank" align='left'><img src="https://drive.google.com/uc?export=view&id=1iONwgHbVpwoy6CDjH3PNWw7Nz5qmUkTr" width="500"></a></p>
+<p><a href="" target="_blank" align='left'><img src="https://drive.google.com/uc?export=view&id=1PcDgRUNoNsOaqMJnix2ivSwdpRfiaPwD" width="500"></a></p>
+<p><a href="" target="_blank" align='left'><img src="https://drive.google.com/uc?export=view&id=1PcDgRUNoNsOaqMJnix2ivSwdpRfiaPwD" width="500"></a></p>
